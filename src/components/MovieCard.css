@@ -1,0 +1,16 @@
+.movie-card {
+  width: 200px;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.movie-poster {
+  width: 100%;
+}
+
+.movie-title {
+  font-size: 14px;
+  margin-top: 10px;
+  color: white;
+}
