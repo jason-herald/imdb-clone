@@ -1,0 +1,14 @@
+.footer {
+  background-color: rgb(17, 24, 39);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  border-top: 1px solid rgb(31, 41, 55);
+}
+
+.heart {
+  color: red;
+}
