@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import ProductListingPage from "./pages/ProductListingPage";
+import ProductListingPage from "./pages/MoviesListingPage";
 
-import ProductListingPageTvShows from "./pages/ProductListingPageTvShows";
+import ProductListingPageTvShows from "./pages/TvShowsListingPage";
 import "./App.css";
 
 const App = () => {

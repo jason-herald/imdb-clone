@@ -1,0 +1,41 @@
+.tvshow-card {
+  width: 200px;
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tvshow-poster {
+  width: 100%;
+}
+
+.tvshow-title {
+  font-size: 14px;
+  margin-top: 10px;
+  color: white;
+}
+.tvshow-info {
+  margin-top: 10px;
+}
+
+.tvshow-first-air-date {
+  margin-top: 5px;
+  font-size: 12px;
+  color: gray;
+}
+.tvshow-rating {
+  font-size: 16px;
+  display: flex;
+  color: white;
+  align-items: center;
+}
+
+.star {
+  margin-right: 2px;
+  color: rgb(249, 115, 22);
+}
+
+.rating-value {
+  margin-left: 5px;
+  font-size: 14px;
+}

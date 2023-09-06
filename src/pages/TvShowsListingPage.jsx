@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "../components/MovieCard";
 import { fetchPopularTVShows } from "../helpers/api";
+import TVShowCard from "../components/TVShowCard";
 
 const ProductListingPageTvShows = () => {
   const [tvShows, setTVShows] = useState([]);
@@ -17,9 +17,9 @@ const ProductListingPageTvShows = () => {
   return (
     <div className="container">
       <h2 className="heading">Popular TV Shows</h2>
-      <div className="movie-list">
+      <div className="tvshow-list">
         {tvShows.map((show) => (
-          <MovieCard key={show.id} movie={show} />
+          <TVShowCard key={show.id} show={show} />
         ))}
       </div>
     </div>

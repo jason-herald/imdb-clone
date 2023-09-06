@@ -6,33 +6,38 @@
   text-transform: uppercase;
 }
 
-.movie-list {
+.movie-list,
+.tvshow-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
 @media (min-width: 900px) {
-  .movie-card {
+  .movie-card,
+  .tvshow-card {
     flex: 1 0 calc(17% - 20px);
     margin: 10px;
   }
 }
 
 @media (max-width: 900px) {
-  .movie-card {
+  .movie-card,
+  .tvshow-card {
     width: calc(100% / 3);
   }
 }
 
 @media (max-width: 600px) {
-  .movie-card {
+  .movie-card,
+  .tvshow-card {
     width: calc(100% / 2);
   }
 }
 
 @media (max-width: 400px) {
-  .movie-card {
+  .movie-card,
+  .tvshow-card {
     width: 100%;
   }
 }
