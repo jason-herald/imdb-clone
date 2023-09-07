@@ -6,6 +6,7 @@ import ProductListingPage from "./pages/MoviesListingPage";
 
 import ProductListingPageTvShows from "./pages/TvShowsListingPage";
 import "./App.css";
+import MovieDetailsPage from "./pages/MovieDetailsPage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Routes>
           <Route path="/" exact element={<ProductListingPage />} />
           <Route path="/tv-shows" element={<ProductListingPageTvShows />} />
+          <Route path="/movie/:id" element={<MovieDetailsPage />} />
         </Routes>
         <Footer />
       </div>

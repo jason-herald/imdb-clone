@@ -25,3 +25,39 @@ export const fetchPopularTVShows = async () => {
     return [];
   }
 };
+
+export const fetchMovieDetails = async (id) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/movie/${id}?api_key=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie details:", error);
+    return {};
+  }
+};
+
+export const fetchMovieCredits = async (id) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/movie/${id}/credits?api_key=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie credits:", error);
+    return {};
+  }
+};
+
+export const fetchMovieImages = async (id) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/movie/${id}/images?api_key=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie images:", error);
+    return {};
+  }
+};
