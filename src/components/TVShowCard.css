@@ -8,7 +8,13 @@
 .tvshow-poster {
   width: 100%;
 }
-
+.tvshow-poster {
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+.tvshow-poster:hover {
+  opacity: 0.7;
+}
 .tvshow-title {
   font-size: 14px;
   margin-top: 10px;

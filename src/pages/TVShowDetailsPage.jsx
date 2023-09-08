@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-  fetchMovieDetails,
-  fetchMovieCredits,
-  fetchMovieImages,
+  fetchTVShowDetails,
+  fetchTVShowCredits,
+  fetchTVShowImages,
 } from "../helpers/api";
 import "../App.css";
 
-const MovieDetailsPage = () => {
+const TVShowDetailsPage = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState({});
   const [credits, setCredits] = useState({});
@@ -15,9 +15,9 @@ const MovieDetailsPage = () => {
 
   useEffect(() => {
     const fetchDetails = async () => {
-      const fetchedMovie = await fetchMovieDetails(id);
-      const fetchedCredits = await fetchMovieCredits(id);
-      const fetchedImages = await fetchMovieImages(id);
+      const fetchedMovie = await fetchTVShowDetails(id);
+      const fetchedCredits = await fetchTVShowCredits(id);
+      const fetchedImages = await fetchTVShowImages(id);
       setMovie(fetchedMovie);
       setCredits(fetchedCredits);
       setImages(fetchedImages);
@@ -32,18 +32,18 @@ const MovieDetailsPage = () => {
         <div className="left-side">
           <img
             src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
-            alt={movie.title}
+            alt={movie.name}
           />
         </div>
         <div className="right-side">
-          <h1 className="movie-title">{movie.title}</h1>
+          <h1 className="movie-title">{movie.name}</h1>
           <div className="info-line">
             <span className="star-rating">
               <span className="orange-star">&#9733; </span>
               {movie.vote_average * 10}%
             </span>
             <span className="separator">|</span>
-            <span className="release-date">{movie.release_date}</span>
+            <span className="release-date">{movie.first_air_date}</span>
             <span className="separator">|</span>
             <span className="genres">
               {movie.genres?.map((g) => g.name).join(", ")}
@@ -93,4 +93,4 @@ const MovieDetailsPage = () => {
   );
 };
 
-export default MovieDetailsPage;
+export default TVShowDetailsPage;

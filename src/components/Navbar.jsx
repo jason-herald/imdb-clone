@@ -11,7 +11,9 @@ const Navbar = () => {
           alt="Logo"
           className="navbar-logo"
         />
-        <h2>Vite Movies</h2>
+        <Link to="/">
+          <h2 className="nav-heading">Vite Movies</h2>
+        </Link>
       </div>
       <div className="navbar-right">
         <Link to="/" className="navbar-link">

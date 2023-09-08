@@ -5,8 +5,9 @@ import Navbar from "./components/Navbar";
 import ProductListingPage from "./pages/MoviesListingPage";
 
 import ProductListingPageTvShows from "./pages/TvShowsListingPage";
-import "./App.css";
+import TVShowDetailsPage from "./pages/TVShowDetailsPage";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
+import "./App.css";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/" exact element={<ProductListingPage />} />
           <Route path="/tv-shows" element={<ProductListingPageTvShows />} />
           <Route path="/movie/:id" element={<MovieDetailsPage />} />
+          <Route path="/tv/:id" element={<TVShowDetailsPage />} />
         </Routes>
         <Footer />
       </div>

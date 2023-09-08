@@ -61,3 +61,35 @@ export const fetchMovieImages = async (id) => {
     return {};
   }
 };
+export const fetchTVShowDetails = async (id) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/tv/${id}?api_key=${API_KEY}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching TV Show details:", error);
+    return {};
+  }
+};
+export const fetchTVShowCredits = async (id) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/tv/${id}/credits?api_key=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching TV show credits:", error);
+    return {};
+  }
+};
+
+export const fetchTVShowImages = async (id) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/tv/${id}/images?api_key=${API_KEY}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching TV show images:", error);
+    return {};
+  }
+};
