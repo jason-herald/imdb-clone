@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { fetchPopularTVShows } from "../helpers/api";
-import TVShowCard from "../components/TVShowCard";
 import MovieCard from "../components/MovieCard";
 
 const ProductListingPageTvShows = () => {
