@@ -1,0 +1,51 @@
+.modal {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  z-index: 900;
+}
+
+.modal-content {
+  background-color: rgb(249, 115, 22);
+
+  padding: 1rem;
+  width: 300px;
+  border-radius: 8px;
+  min-height: 250px;
+}
+
+.close-button {
+  cursor: pointer;
+}
+.filter-label {
+  font-size: 16px;
+  margin-right: 10px;
+  color: rgb(17, 24, 39);
+}
+
+.filter-select {
+  width: 160px;
+  height: 30px;
+  font-size: 16px;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+  padding: 4px;
+  color: white;
+  border: none;
+  background-color: rgb(17, 24, 39);
+}
+
+.filter-select:focus {
+  outline: none;
+}
+.star {
+  color: rgb(249, 115, 22);
+}
+.filter-heading {
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(17, 24, 39);
+}

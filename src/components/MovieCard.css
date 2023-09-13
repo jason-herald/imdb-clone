@@ -2,18 +2,8 @@
   width: 200px;
   padding: 10px;
   box-sizing: border-box;
+  max-width: 500px;
   /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-}
-
-.movie-poster {
-  width: 100%;
-}
-.movie-poster {
-  transition: opacity 0.3s ease;
-  opacity: 1;
-}
-.movie-poster:hover {
-  opacity: 0.7;
 }
 
 .movie-title {
@@ -35,14 +25,4 @@
   display: flex;
   color: white;
   align-items: center;
-}
-
-.star {
-  margin-right: 2px;
-  color: rgb(249, 115, 22);
-}
-
-.rating-value {
-  margin-left: 5px;
-  font-size: 14px;
 }

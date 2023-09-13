@@ -27,3 +27,24 @@ a:hover,
 a:active {
   text-decoration: none;
 }
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 99vw;
+}
+
+.main-content {
+  flex: 1 0 auto;
+}
+
+.header,
+.footer {
+  flex-shrink: 0;
+}
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
