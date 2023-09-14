@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./MovieCard.css";
+// import "../App.css";
 import StarRating from "./StarRating";
 import CardImage from "./CardImage";
 

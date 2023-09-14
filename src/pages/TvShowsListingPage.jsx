@@ -8,24 +8,54 @@ import { faFilter, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const ProductListingPageTvShows = () => {
   const [tvShows, setTVShows] = useState([]);
-  const [filterRating, setFilterRating] = useState(0);
+
   const [showModal, setShowModal] = useState(false);
+  const [filter, setFilter] = useState({
+    rating: 0,
+    originalLanguage: "all",
+    popularity: "all",
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       const fetchedTVShows = await fetchPopularTVShows();
-      setTVShows(fetchedTVShows);
+      let filteredTVShows = fetchedTVShows;
+      if (filter.rating > 0) {
+        filteredTVShows = filteredTVShows.filter(
+          (movie) => movie.vote_average / 2 >= filter.rating
+        );
+      }
+      if (filter.originalLanguage !== "all") {
+        filteredTVShows = filteredTVShows.filter(
+          (movie) => movie.original_language === filter.originalLanguage
+        );
+      }
+      if (filter.popularity !== "all") {
+        filteredTVShows = filteredTVShows.filter((movie) => {
+          const popularity = parseFloat(movie.popularity);
+          return popularity >= parseFloat(filter.popularity);
+        });
+      }
+      setTVShows(filteredTVShows);
     };
 
     fetchData();
-  }, []);
+  }, [filter]);
   const handleFilterChange = (e) => {
-    setFilterRating(e.target.value);
+    const { id, value } = e.target;
+    setFilter({
+      ...filter,
+      [id]: value,
+    });
+  };
+  const clearFilters = () => {
+    setFilter({
+      rating: 0,
+      originalLanguage: "all",
+      popularity: "all",
+    });
   };
 
-  const filteredTVShows = tvShows.filter((show) => {
-    return show.vote_average / 2 >=  filterRating;
-  });
   return (
     <div className="container">
       <div className="heading-row">
@@ -40,12 +70,14 @@ const ProductListingPageTvShows = () => {
           <FilterModal
             show={showModal}
             handleFilterChange={handleFilterChange}
+            clearFilters={clearFilters}
+            filters={filter}
           />
         </div>
       </div>
 
       <div className="tvshow-list">
-        {filteredTVShows.map((show) => (
+        {tvShows?.map((show) => (
           <MovieCard key={show.id} movie={show} isMovie={false} />
         ))}
       </div>

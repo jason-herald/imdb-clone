@@ -45,6 +45,93 @@
   }
 }
 
+/* Navbar component */
+.navbar {
+  padding: 10px;
+  background-color: rgb(17, 24, 39);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-color: rgb(31, 41, 55);
+  border-bottom: 1px solid rgb(31, 41, 55);
+  position: sticky;
+  top: 0;
+
+  z-index: 1000;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-logo {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.navbar-link {
+  margin: 0 15px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.navbar-link:hover {
+  color: #bbbbbb;
+}
+.nav-heading {
+  color: white;
+  transition: color 0.3s ease;
+}
+.nav-heading:hover {
+  color: #bbbbbb;
+}
+/* Movic card component */
+.movie-card {
+  width: 200px;
+  padding: 10px;
+  box-sizing: border-box;
+  max-width: 500px;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+}
+
+.movie-title {
+  font-size: 14px;
+  margin-top: 10px;
+  color: white;
+}
+.movie-info {
+  margin-top: 10px;
+}
+
+.movie-release-date {
+  margin-top: 5px;
+  font-size: 12px;
+  color: gray;
+}
+.movie-rating {
+  font-size: 16px;
+  display: flex;
+  color: white;
+  align-items: center;
+}
+/* Footer component css */
+.footer {
+  background-color: rgb(17, 24, 39);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  bottom: 0;
+  border-top: 1px solid rgb(31, 41, 55);
+}
+
+.heart {
+  color: red;
+}
+
 /* movie details page  */
 
 .movie-details {
@@ -226,4 +313,95 @@
   cursor: pointer;
   font-size: 1.5rem;
   color: rgb(249, 115, 22);
+}
+
+/* Filter Modal component */
+.modal {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  width: auto;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  z-index: 900;
+}
+
+.modal-content {
+  background-color: rgb(249, 115, 22);
+
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  min-height: 250px;
+}
+
+.close-button {
+  cursor: pointer;
+}
+.filter-label {
+  font-size: 16px;
+  margin-right: 10px;
+  color: rgb(17, 24, 39);
+}
+
+.filter-select {
+  width: 160px;
+  height: 30px;
+  font-size: 16px;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+  padding: 4px;
+  color: white;
+  border: none;
+  background-color: rgb(17, 24, 39);
+}
+
+.filter-select:focus {
+  outline: none;
+}
+.star {
+  color: rgb(249, 115, 22);
+}
+.filter-heading {
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(17, 24, 39);
+}
+
+.filter-heading {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.modal-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-label,
+.filter-select {
+  margin: 0 10px;
+}
+
+@media (max-width: 955px) {
+  .modal-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-label,
+  .filter-select {
+    margin-bottom: 10px;
+  }
+}
+.clear-filters-button {
+  background-color: #ff5252;
+  color: white;
+  border: 2px solid rgb(17, 24, 39);
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
 }

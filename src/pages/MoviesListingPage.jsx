@@ -9,23 +9,59 @@ import { faFilter, faTimes } from "@fortawesome/free-solid-svg-icons";
 const ProductListingPage = () => {
   const [movies, setMovies] = useState([]);
   const [filterRating, setFilterRating] = useState(0);
+  const [filter, setFilter] = useState({
+    rating: 0,
+    originalLanguage: "all",
+    popularity: "all",
+  });
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       const fetchedMovies = await fetchPopularMovies();
-      setMovies(fetchedMovies);
+
+      let filteredMovies = fetchedMovies;
+      if (filter.rating > 0) {
+        filteredMovies = filteredMovies.filter(
+          (movie) => movie.vote_average / 2 >= filter.rating
+        );
+      }
+      if (filter.originalLanguage !== "all") {
+        filteredMovies = filteredMovies.filter(
+          (movie) => movie.original_language === filter.originalLanguage
+        );
+      }
+      if (filter.popularity !== "all") {
+        filteredMovies = filteredMovies.filter((movie) => {
+          const popularity = parseFloat(movie.popularity);
+          return popularity >= parseFloat(filter.popularity);
+        });
+      }
+      setMovies(filteredMovies);
     };
 
     fetchData();
-  }, []);
+  }, [filter]);
+  // const handleFilterChange = (e) => {
+  //   setFilterRating(e.target.value);
+  // };
   const handleFilterChange = (e) => {
-    setFilterRating(e.target.value);
+    const { id, value } = e.target;
+    setFilter({
+      ...filter,
+      [id]: value,
+    });
   };
-
-  const filteredMovies = movies.filter((movie) => {
-    return movie.vote_average / 2 >= filterRating;
-  });
+  const clearFilters = () => {
+    setFilter({
+      rating: 0,
+      originalLanguage: "all",
+      popularity: "all",
+    });
+  };
+  // const filteredMovies = movies.filter((movie) => {
+  //   return movie.vote_average / 2 >= filterRating;
+  // });
   return (
     <div className="container">
       <div className="heading-row">
@@ -40,11 +76,13 @@ const ProductListingPage = () => {
           <FilterModal
             show={showModal}
             handleFilterChange={handleFilterChange}
+            clearFilters={clearFilters}
+            filters={filter}
           />
         </div>
       </div>
       <div className="movie-list">
-        {filteredMovies.map((movie) => (
+        {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>
