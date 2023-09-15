@@ -8,11 +8,11 @@ import { faFilter, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const ProductListingPage = () => {
   const [movies, setMovies] = useState([]);
-  const [filterRating, setFilterRating] = useState(0);
+
   const [filter, setFilter] = useState({
     rating: 0,
     originalLanguage: "all",
-    popularity: "all",
+    popularity: 0,
   });
   const [showModal, setShowModal] = useState(false);
 
@@ -42,9 +42,7 @@ const ProductListingPage = () => {
 
     fetchData();
   }, [filter]);
-  // const handleFilterChange = (e) => {
-  //   setFilterRating(e.target.value);
-  // };
+
   const handleFilterChange = (e) => {
     const { id, value } = e.target;
     setFilter({
@@ -52,16 +50,19 @@ const ProductListingPage = () => {
       [id]: value,
     });
   };
+
+  const closeFilterModal = () => {
+    setShowModal(false);
+  };
+
   const clearFilters = () => {
     setFilter({
       rating: 0,
       originalLanguage: "all",
-      popularity: "all",
+      popularity: 0,
     });
   };
-  // const filteredMovies = movies.filter((movie) => {
-  //   return movie.vote_average / 2 >= filterRating;
-  // });
+
   return (
     <div className="container">
       <div className="heading-row">
@@ -78,6 +79,7 @@ const ProductListingPage = () => {
             handleFilterChange={handleFilterChange}
             clearFilters={clearFilters}
             filters={filter}
+            closeFilterModal={closeFilterModal}
           />
         </div>
       </div>

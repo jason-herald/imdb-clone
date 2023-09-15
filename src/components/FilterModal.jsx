@@ -1,70 +1,97 @@
+import { useState } from "react";
 import React from "react";
 import "../App.css";
 
-const FilterModal = ({ show, handleFilterChange, clearFilters, filters }) => {
+const FilterModal = ({
+  show,
+  handleFilterChange,
+  clearFilters,
+  filters,
+  closeFilterModal,
+}) => {
   if (!show) {
     return null;
   }
 
+  const stopPropagation = (e) => {
+    e.stopPropagation();
+  };
+  const onStarClick = (rating) => {
+    handleFilterChange({ target: { id: "rating", value: rating } });
+  };
+  const handleSliderChange = (e) => {
+    handleFilterChange(e);
+  };
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal" onClick={closeFilterModal}>
+      <div className="modal-content" onClick={stopPropagation}>
         <h2 className="filter-heading">Filters</h2>
-        <label htmlFor="ratingFilter" className="filter-label">
-          Filter by Rating:
-        </label>
-        <select
-          id="rating"
-          className="filter-select"
-          onChange={handleFilterChange}
-          value={filters.rating}
-        >
-          <option value={0}>All</option>
-          <option value={1}>
-            1<span className="star">★ </span>and above
-          </option>
-          <option value={2}>
-            2<span className="star">★ </span>and above
-          </option>
-          <option value={3}>
-            3<span className="star">★ </span>and above
-          </option>
-          <option value={4}>
-            4<span className="star">★ </span>and above
-          </option>
-        </select>
-        <label htmlFor="originalLanguage" className="filter-label">
-          Original Language:
-        </label>
-        <select
-          id="originalLanguage"
-          className="filter-select"
-          onChange={handleFilterChange}
-          value={filters.originalLanguage}
-        >
-          <option value="all">All</option>
-          <option value="en">English</option>
-          <option value="hi">Hindi</option>
-          <option value="cn">Chinese</option>
-          <option value="es">Spanish</option>
-        </select>
+        <div className="modal-content-flex">
+          <div className="filter-star-container">
+            <h3 className="star-rating-heading">Filter by Star Rating</h3>
+            {Array.from({ length: 4 }).map((_, index) => (
+              <div
+                key={index}
+                className={`filter-star-row ${
+                  index < filters.rating ? "filter-active" : ""
+                }`}
+                onClick={() => onStarClick(index + 1)}
+              >
+                {Array.from({ length: 5 }).map((_, starIndex) => (
+                  <span
+                    key={starIndex}
+                    className={`filter-star ${
+                      starIndex <= index ? "filter-filled-star" : ""
+                    }`}
+                  >
+                    {starIndex <= index ? "★" : "☆"}
+                  </span>
+                ))}
+              </div>
+            ))}
+            
+          </div>
 
-        <label htmlFor="popularity" className="filter-label">
-          Popularity:
-        </label>
-        <select
-          id="popularity"
-          className="filter-select"
-          onChange={handleFilterChange}
-          value={filters.popularity}
-        >
-          <option value={0}>All</option>
-          <option value={1000}>1000+</option>
-          <option value={2000}>2000+</option>
-        </select>
-        <button className="clear-filters-button" onClick={clearFilters}>
-          Clear Filters
-        </button>
+          <div className="filter-star-container">
+            <h3 className="star-rating-heading">Filter by Language</h3>
+            <select
+              id="originalLanguage"
+              className="filter-select"
+              onChange={handleFilterChange}
+              value={filters.originalLanguage}
+            >
+              <option value="all">All</option>
+              <option value="en">English</option>
+              <option value="hi">Hindi</option>
+              <option value="cn">Chinese</option>
+              <option value="es">Spanish</option>
+            </select>
+          </div>
+
+          <div className="filter-star-container">
+            <h3 className="star-rating-heading">Filter by Popularity</h3>
+            <div className="slider-container">
+              <span className="slider-label">0</span>
+              <input
+                type="range"
+                id="popularity"
+                min="0"
+                max="3000"
+                step="100"
+                value={filters.popularity}
+                onChange={handleSliderChange}
+                className="popularity-slider"
+              />
+              <span className="slider-label">3000+</span>
+            </div>
+            <div className="slider-value">
+              Current Value:{filters.popularity}
+            </div>
+          </div>
+          <button className="clear-filters-button" onClick={clearFilters}>
+            Clear Filters
+          </button>
+        </div>
       </div>
     </div>
   );

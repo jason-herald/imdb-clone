@@ -13,7 +13,7 @@ const ProductListingPageTvShows = () => {
   const [filter, setFilter] = useState({
     rating: 0,
     originalLanguage: "all",
-    popularity: "all",
+    popularity: 0,
   });
 
   useEffect(() => {
@@ -41,6 +41,7 @@ const ProductListingPageTvShows = () => {
 
     fetchData();
   }, [filter]);
+
   const handleFilterChange = (e) => {
     const { id, value } = e.target;
     setFilter({
@@ -48,14 +49,18 @@ const ProductListingPageTvShows = () => {
       [id]: value,
     });
   };
+
   const clearFilters = () => {
     setFilter({
       rating: 0,
       originalLanguage: "all",
-      popularity: "all",
+      popularity: 0,
     });
   };
 
+  const closeFilterModal = () => {
+    setShowModal(false);
+  };
   return (
     <div className="container">
       <div className="heading-row">
@@ -72,6 +77,7 @@ const ProductListingPageTvShows = () => {
             handleFilterChange={handleFilterChange}
             clearFilters={clearFilters}
             filters={filter}
+            closeFilterModal={closeFilterModal}
           />
         </div>
       </div>
