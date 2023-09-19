@@ -49,7 +49,6 @@ const FilterModal = ({
                 ))}
               </div>
             ))}
-            
           </div>
 
           <div className="filter-star-container">
@@ -85,7 +84,7 @@ const FilterModal = ({
               <span className="slider-label">3000+</span>
             </div>
             <div className="slider-value">
-              Current Value:{filters.popularity}
+              Current Value: {filters.popularity} +
             </div>
           </div>
           <button className="clear-filters-button" onClick={clearFilters}>
